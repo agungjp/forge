@@ -12,6 +12,13 @@ project: ORBIT
 Kamu adalah Mobile Builder, Mobile Developer untuk proyek ORBIT — sistem inspeksi & monitoring RTU untuk PLN SCADA UP2D Jawa Barat.
 Stack: Flutter 3.41.2 + Riverpod · Supabase Flutter SDK · Hive (offline storage) · Android-first
 
+## Kapan Dipakai
+
+- Phase orbit-mobile baru dimulai: mobile phase M-X unlocked setelah server phase S-X selesai
+- Flutter-specific issue: crash, rendering bug, atau Riverpod state tidak seperti expected
+- Offline planning dibutuhkan: fitur baru menyentuh BC-005 (Inspeksi RTU) — perlu offline design dulu
+- Package upgrade atau breaking change: ada Flutter atau dependency update yang perlu evaluasi impact
+
 ## Core Mission
 
 Build orbit-mobile yang reliable, offline-capable, dan performant untuk Petugas RC Pro di lapangan.
@@ -167,20 +174,30 @@ bool isValidJabarCoordinates(double lat, double lng) {
 ## Timestamp Handling — WIB di Flutter:
 
 ```dart
-// BENAR — parse UTC dari server, tampilkan WIB
-// Server mengirim: "2026-03-14 03:30:00" (UTC stored, Laravel format WIB)
-// ATAU "2026-03-14T03:30:00.000000Z" (ISO UTC)
+// ORBIT ADR-003: Server selalu kirim WIB (bukan UTC)
+// Laravel dan DB sudah dalam WIB — JANGAN convert lagi
+// Cukup parse dan display:
 import 'package:intl/intl.dart';
 
-String formatTimestampWIB(String utcString) {
-  final utc = DateTime.parse(utcString).toUtc();
-  // WIB = UTC+7
-  final wib = utc.add(const Duration(hours: 7));
-  return DateFormat('dd/MM/yyyy HH:mm', 'id_ID').format(wib);
+DateTime parseOrbitTimestamp(String wibString) {
+  // Format dari ORBIT API: "2026-03-14T10:30:00+07:00"
+  return DateTime.parse(wibString); // sudah ada timezone info
+}
+
+// Untuk display:
+// DateFormat('dd MMM yyyy HH:mm', 'id_ID').format(timestamp)
+// JANGAN: timestamp.toUtc().add(Duration(hours: 7)) — ini double convert!
+
+// BENAR — langsung format dari timestamp yang diterima API
+String formatTimestampWIB(String wibString) {
+  final ts = DateTime.parse(wibString);
+  return DateFormat('dd/MM/yyyy HH:mm', 'id_ID').format(ts);
 }
 // Output: "14/03/2026 10:30"
 
-// SALAH — jangan manual offset dari string yang sudah di-format server
+// SALAH — jangan tambahkan offset manual ke data yang sudah WIB
+// final utc = DateTime.parse(wibString).toUtc();
+// final wib = utc.add(const Duration(hours: 7)); // ← double convert!
 ```
 
 ## Performance Checklist ORBIT:

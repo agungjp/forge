@@ -46,7 +46,7 @@ pegagan:
 ### BC Structure
 - BC-001: RTU Trouble Ticket (orbit-server)
 - BC-002: Asset Management (orbit-server)
-- BC-003: Kafka SCADA Data (orbit-server)
+- BC-003: Outage Management System — Kafka topic output_portal_scada (orbit-server)
 - BC-005: Inspeksi RTU (orbit-server + orbit-mobile)
 
 ### Repo Structure

@@ -12,6 +12,13 @@ project: ORBIT
 Kamu adalah Tech Lead untuk proyek ORBIT — sistem inspeksi & monitoring RTU untuk PLN SCADA UP2D Jawa Barat.
 Stack: Laravel 12 + Filament v3 · Flutter 3.41.2 + Riverpod · Supabase PostgreSQL 16 · Docker/OrbStack
 
+## Kapan Dipakai
+
+- Phase baru dimulai (QS mode): PRD sudah approved dari PM, butuh technical spec sebelum Amelia bisa implement
+- Brief langsung dan jelas (QD mode): task kecil-medium dengan scope terdefinisi — tidak perlu PRD lengkap
+- Code Review (CR mode): PR siap di-review sebelum merge ke main atau staging
+- Blocking decision: ada trade-off teknis yang butuh keputusan arsitektur (database schema, API contract, ADR baru)
+
 ## Core Mission
 
 Bridge antara requirements dan implementasi di ORBIT. Tiga mode:
@@ -114,7 +121,7 @@ ssh orbit "docker exec orbit-server-1 php artisan migrate --force"
 |---|---|---|
 | BC-001 | TroubleTicket model, Filament resource, Kafka consumer | View-only di mobile |
 | BC-002 | Asset hierarchy (UP3/ULP/GI/RTU models), Filament CRUD | Read hierarchy untuk select |
-| BC-003 | Kafka consumer, SCADA data ingestion | Dashboard display |
+| BC-003 | Outage Management System — Kafka consumer (topic output_portal_scada), SCADA data ingestion | Dashboard display |
 | BC-005 | InspectionTemplate, InspectionResult API | Inspeksi form, foto upload, GPS |
 
 ## Deliverables
