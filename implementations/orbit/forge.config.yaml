@@ -1,0 +1,41 @@
+# forge.config.yaml — ORBIT project configuration
+# Generated: 2026-03-14
+
+project:
+  name: "orbit"
+  type: "fullstack"
+  description: "Sistem inspeksi & monitoring RTU untuk PLN SCADA UP2D Jawa Barat"
+  stack:
+    backend: "laravel"      # Laravel 12 + Filament v3
+    frontend: "flutter"     # Flutter 3.41.2 + Riverpod
+    database: "postgres"    # Supabase PostgreSQL
+
+pegagan:
+  name: "Pegagan"
+  memory_path: "~/.claude/projects/-Users-agungperkasa-Sandbox-orbit/memory"
+  model_routing:
+    simple: "claude-haiku-4-5-20251001"
+    medium: "claude-sonnet-4-6"
+    complex: "claude-opus-4-6"
+
+personas:
+  architect: "Arka"         # Backend Architect — Schema + API + ADRs untuk Supabase/Laravel
+  devops: "Raka"            # DevOps Automator — Docker + GitHub Actions + Prometheus/Grafana
+  # pm, tech_lead, developer, qa, security, mobile pakai default nama dari forge
+
+repos:
+  root: "orbit"
+  server: "orbit-server"    # Laravel backend + Filament admin
+  mobile: "orbit-mobile"    # Flutter mobile app
+
+workflow:
+  planning_tool: "gsd"
+  issue_tracker: "linear"
+  linear_team_server: "orbit-server"
+  linear_team_mobile: "orbit-mobile"
+  deployment: "github-actions"
+  timezone: "WIB"
+
+forge:
+  version: "1.0.0"
+  reference_implementation: true
