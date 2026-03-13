@@ -1,0 +1,35 @@
+# forge.config.yaml — Project configuration
+# Copy ini ke root project, edit sesuai kebutuhan
+
+project:
+  name: "your-project-name"
+  type: "web-app"  # web-app | mobile-app | api | fullstack
+  stack:
+    backend: ""    # laravel | go | node | django
+    frontend: ""   # react | vue | nextjs | flutter
+    database: ""   # postgres | mysql | sqlite
+
+pegagan:
+  name: "Pegagan"  # Bisa diganti per project
+  model_routing:
+    simple: "claude-haiku-4-5-20251001"
+    medium: "claude-sonnet-4-6"
+    complex: "claude-opus-4-6"
+
+personas:
+  pm: "John"
+  architect: "Winston"
+  developer: "Amelia"
+  qa: "Quinn"
+  ux: "Sally"
+  quick_flow: "Barry"
+  # Tambah custom personas per project
+
+workflow:
+  planning_tool: "gsd"
+  issue_tracker: "linear"  # linear | github | none
+  deployment: "github-actions"
+
+forge:
+  version: "1.0.0"
+  reference_implementation: "orbit"

@@ -1,49 +1,46 @@
-# forge
+# Forge — Engineering OS
 
-**Engineering OS for solo fullstack + mobile + devops developer.**
-
-Standar workflow end-to-end yang tool-agnostic — dari User Story sampai Observability. Bisa dipakai sebagai template untuk proyek baru.
-
----
+Engineering operating system untuk solo developer yang membangun produk serius.
 
 ## Konsep
 
-```
-Standard (tool-agnostic)
-  └── Playbook (how-to per phase)
-        └── Tool Bindings (implementasi konkret, bisa diganti)
-              └── Templates (generator untuk proyek baru)
-```
-
-**6-Layer Architecture:**
-
-| Layer | Fungsi | Tool Default |
-|---|---|---|
-| 1 — Orchestration | Quality gates, phase advance, evidence | NEXUS (agency-agents) |
-| 2 — Planning | ROADMAP, PLAN, STATE, PM tracking | GSD + Linear |
-| 3 — Execution | Spec, implement, QA | BMAD (Barry/Amelia/Quinn) |
-| 4 — Safeguards | TDD, debug, verify, review | Superpowers |
-| 5 — Context | Token efficiency, library docs | context-mode + context7 |
-| 6 — Design | UI/UX, design system | ui-ux-pro-max + Figma |
-
----
-
-## Pipelines
-
-- **Pipeline 1: Feature/Milestone** — 19 steps, User Story → Observability
-- **Pipeline 2: Hotfix** — 4 steps, Triage → Post-mortem
-
-Detail: `standard/`
-
----
+Forge adalah workflow OS yang mengkolaborasikan tools terbaik untuk AI-assisted development:
+- **Tool-agnostic** — workflow tidak berubah kalau tools diganti
+- **Startup-grade** — mencakup seluruh siklus: Bisnis → Produk → Engineering → Ops
+- **Orchestrated by Pegagan** — satu interface, semua workflows
 
 ## Reference Implementation
 
-- **ORBIT** — Sistem inspeksi RTU untuk PLN SCADA UP2D Jawa Barat
-  `implementations/orbit/`
+**ORBIT** (github.com/agungjp/orbit) adalah reference implementation pertama.
 
----
+## Struktur
 
-## Status
+| Direktori | Isi |
+|---|---|
+| `pegagan/` | Chief of Staff agent — modes, routing, memory schema |
+| `standard/` | 6-layer architecture, pipeline, slot registry, quality gates |
+| `personas/` | Template personas (BMAD + agency-agents + custom) |
+| `playbook/` | How-to per workflow |
+| `hooks/` | Automation hooks (session-start, stop, precompact) |
+| `templates/` | forge init skeleton |
+| `implementations/` | Reference implementations (orbit) |
 
-> Work in progress. Brainstorm doc: lihat ORBIT `docs/plans/2026-03-12-forge-workflow-brainstorm.md`
+## Quick Start
+
+```bash
+# Clone ke project baru
+cp -r ~/Sandbox/forge/.forge-template/ ./
+# Edit forge.config.yaml sesuai project
+```
+
+## Tools yang Diintegrasikan
+
+| Layer | Tool |
+|---|---|
+| L1 Orchestration | msitarzewski/agency-agents (NEXUS) |
+| L2 Planning | gsd-build/get-shit-done + Linear MCP |
+| L3 Execution | bmad-code-org/BMAD-METHOD |
+| L4 Safeguards | obra/superpowers + affaan-m/everything-claude-code |
+| L5 Context | mksglu/context-mode + context7 |
+| L6 Design | ui-ux-pro-max + design-research |
+| Infrastructure | rtk-ai/rtk + hooks |
