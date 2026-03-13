@@ -1,0 +1,79 @@
+# CLAUDE.md — {{project_name}}
+
+**Bahasa:** Indonesia (ikuti bahasa pengguna).
+
+---
+
+## Project
+
+**{{project_name}}** — {{project_description}}
+
+| Repo | Stack | GitHub |
+|---|---|---|
+| `{{project_name}}/` | Docs · Planning · Orchestration | {{github_org}}/{{project_name}} |
+
+---
+
+## Peran Root — Master Orchestrator
+
+Root adalah **satu-satunya sumber kebenaran** untuk domain, milestone, dan phase.
+
+**Root BOLEH:** update docs, BC registry, ROADMAP, STATE, delegate ke sub-repo.
+**Root TIDAK BOLEH:** eksekusi kode, migration, build, test — semua di sub-repo.
+
+---
+
+## Bounded Contexts
+
+Lihat `docs/bc-registry.md` untuk arsitektur lengkap.
+
+---
+
+## Milestones & Progress
+
+Lihat `.planning/ROADMAP.md` — phase diberi prefix repo: `S*` = server, `M*` = mobile.
+
+---
+
+## Environments
+
+| Env | Akses | URL |
+|---|---|---|
+| Dev (lokal) | localhost | `http://localhost:8000` |
+| Staging | SSH | `{{staging_url}}` |
+| Production | SSH | `{{production_url}}` |
+
+---
+
+## Production Safety Rules
+
+**WAJIB sebelum apapun ke production:**
+1. Test di staging dulu
+2. Backup DB sebelum migration
+3. Gunakan deploy script
+4. Kalau ragu → tanya dulu, jangan eksekusi
+
+---
+
+## Conventions
+
+- **Commit:** `feat:` / `fix:` / `refactor:` / `docs:` / `chore:`
+- **Branch:** `feature/[ticket]` · `hotfix/[desc]` · `staging` · `main`
+- **Timezone:** {{timezone}}
+
+---
+
+## Forge — Engineering Standard
+
+Proyek ini menggunakan `agungjp/forge` sebagai engineering OS.
+
+---
+
+## Commands
+
+```
+/catchup          — resume sesi dari STATE.md
+/sync-state       — simpan progress ke STATE.md sebelum clear
+/delegate         — buat briefing untuk sub-repo
+/progress         — scan status phase semua sub-repo
+```
