@@ -37,9 +37,9 @@ cp -r ~/Sandbox/forge/.forge-template/ ./
 
 | Layer | Tool |
 |---|---|
-| L1 Orchestration | msitarzewski/agency-agents (NEXUS) |
+| L1 Orchestration | msitarzewski/agency-agents (NEXUS) — source: `personas/sources/agency-agents/` |
 | L2 Planning | gsd-build/get-shit-done + Linear MCP |
-| L3 Execution | bmad-code-org/BMAD-METHOD |
+| L3 Execution | bmad-code-org/BMAD-METHOD — source: `tools/sources/BMAD-METHOD/` |
 | L4 Safeguards | obra/superpowers + affaan-m/everything-claude-code |
 | L5 Context | mksglu/context-mode + context7 |
 | L6 Design | ui-ux-pro-max + design-research |
