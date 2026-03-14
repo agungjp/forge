@@ -65,3 +65,33 @@ Cross-repo?
 - Commit per task, bukan per phase
 - Kalau stuck → /gsd:debug, jangan guess
 - Setelah execute → verifikasi dengan /superpowers:verification-before-completion
+
+---
+
+## BMAD Alignment
+
+Forge new-feature flow memetakan ke BMAD Quick Flow. Detail lengkap: `playbook/bmad-reference.md`.
+
+| Forge Step | BMAD Equivalent | BMAD Agent |
+|---|---|---|
+| Brief Tech Lead (QD) | Quick Spec (QS) | Barry |
+| `/gsd:plan-phase` | Quick Dev planning / story creation | Barry / Bob |
+| Context Pre-load | project-context.md loading | (otomatis di BMAD) |
+| `/gsd:execute-phase` | Quick Dev (QD) / Dev Story (DS) | Barry / Amelia |
+| Verifikasi akhir | Code Review (CR) | Amelia / Barry |
+
+**Kapan pertimbangkan Full BMAD Flow:**
+- BC baru dengan domain logic kompleks → gunakan PRD + Architecture + Epics sebelum implement
+- Perubahan besar yang menyentuh multiple bounded contexts → `new-bc.md` lebih tepat
+
+**Standard "Ready for Development" dari BMAD (berlaku juga di Forge):**
+- Setiap task punya file path dan action spesifik
+- Task diurutkan berdasarkan dependency
+- Acceptance criteria pakai Given/When/Then
+- Tidak ada placeholder atau TBD dalam spec
+
+**Prinsip implementasi dari BMAD Dev Agent (Amelia):**
+- Baca seluruh spec sebelum mulai
+- Eksekusi task secara berurutan, tidak ada skipping
+- Mark task selesai HANYA jika implementasi dan test sudah passing
+- Jangan berbohong soal test status
