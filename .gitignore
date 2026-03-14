@@ -2,5 +2,6 @@
 **/.DS_Store
 
 # External sources (cloned separately)
-personas/sources/
-tools/sources/
+personas/sources/agency-agents/
+tools/sources/BMAD-METHOD/
+tools/sources/everything-claude-code/
