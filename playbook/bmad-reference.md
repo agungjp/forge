@@ -1,6 +1,6 @@
 # BMAD Method — Referensi untuk Solo Developer
 
-**Sumber:** `forge/tools/sources/BMAD-METHOD/src/bmm/`
+**Sumber:** `forge/vendor/bmad-method/src/bmm/`
 **Konteks:** Referensi ini difokuskan untuk solo developer, bukan enterprise team.
 
 ---
@@ -191,7 +191,7 @@ Detail pemetaan lihat juga: `new-feature.md` section **BMAD Alignment**.
 ## Referensi File BMAD
 
 ```
-forge/tools/sources/BMAD-METHOD/src/bmm/
+forge/vendor/bmad-method/src/bmm/
 ├── agents/
 │   ├── quick-flow-solo-dev.agent.yaml  ← Barry, main solo dev agent
 │   ├── dev.agent.yaml                  ← Amelia, implementasi

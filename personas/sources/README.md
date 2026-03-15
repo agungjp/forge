@@ -4,8 +4,8 @@ External agent libraries yang jadi referensi untuk persona di ORBIT dan project 
 
 ## agency-agents (`msitarzewski/agency-agents`)
 
-**Lokasi:** `agency-agents/`
-**Update:** `git -C agency-agents pull`
+**Lokasi:** `vendor/agency-agents/`
+**Update:** `git -C ../../vendor/agency-agents pull`
 
 Koleksi specialized agents per domain. Yang relevan untuk ORBIT:
 
@@ -23,4 +23,4 @@ Koleksi specialized agents per domain. Yang relevan untuk ORBIT:
 
 ## BMAD-METHOD (`bmad-code-org/BMAD-METHOD`)
 
-Lihat `../../../tools/sources/README.md`
+Lihat `../../tools/sources/README.md`
