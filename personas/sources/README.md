@@ -23,4 +23,4 @@ Koleksi specialized agents per domain. Yang relevan untuk ORBIT:
 
 ## BMAD-METHOD (`bmad-code-org/BMAD-METHOD`)
 
-Lihat `../../tools/sources/README.md`
+Lihat `../../vendor/SOURCES.md`
