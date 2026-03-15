@@ -44,3 +44,55 @@ cp -r ~/Sandbox/forge/.forge-template/ ./
 | L5 Context | mksglu/context-mode + context7 |
 | L6 Design | ui-ux-pro-max + design-research |
 | Infrastructure | rtk-ai/rtk + hooks |
+
+---
+
+## Forge v2 — Personal AI OS
+
+Forge v2 adalah redesign sebagai **5-layer Personal AI OS** untuk solo dev.
+
+### Architecture
+
+```
+┌─────────────────────────────────────────────────┐
+│  L5: TELOS          mission · goals · beliefs   │
+│  L4: PERSONAS       25 specialist agents        │
+│  L3: GEARS          6 cognitive modes           │
+│  L2: WORKFLOW       INTENT→DISCUSS→PLAN→        │
+│                     EXECUTE→VERIFY→LEARN        │
+│  L1: MEMORY         instincts · STATE · memory  │
+├─────────────────────────────────────────────────┤
+│  PARTY MODE (cross-layer): /forge:discuss       │
+└─────────────────────────────────────────────────┘
+```
+
+### Layer 1: Memory & Learning
+- `telos/` — TELOS context files (mission, goals, beliefs, stack, projects, learned)
+- `instincts/` — behavioral rules (engineering, workflow, domain)
+- Auto-loaded tiap session via SessionStart hook
+
+### Layer 3: Cognitive Gears
+Switch mode berpikir dengan `/gear:[mode]`:
+- `/gear:founder` — rethink problem dari first principles
+- `/gear:architect` — system design, ADR, contracts
+- `/gear:builder` — TDD, atomic commits, no gold-plating
+- `/gear:reviewer` — paranoid audit untuk production bugs
+- `/gear:shipper` — release protocol, staging-first
+- `/gear:debugger` — root cause analysis, scientific method
+
+### Layer 4: Personas
+25 specialist agents di `orbit/.claude/agents/` — agency-agents format dengan Identity, Deliverables, Success Metrics.
+
+### Party Mode
+`/forge:discuss` — spawn 3 perspektif paralel (Architect + Reality + Domain) sebelum keputusan besar. Output: decision matrix + recommendation.
+
+### Installation
+```bash
+# Gear skills
+for skill in ~/Sandbox/forge/skills/gear-*.md; do
+  ln -sf "$skill" ~/.claude/commands/$(basename "$skill")
+done
+
+# Party Mode
+ln -sf ~/Sandbox/forge/skills/forge-discuss.md ~/.claude/commands/forge-discuss.md
+```
