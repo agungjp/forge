@@ -12,7 +12,7 @@ DATE=$(date +%Y-%m-%d)
 
 if [ -z "$VENDOR" ]; then
   echo "Usage: ./forge-update.sh <vendor-name>"
-  echo "Available: agency-agents, bmad-method, everything-claude-code, superpowers, gsd"
+  echo "Available: agency-agents, bmad-method, everything-claude-code, superpowers, gsd, gstack"
   exit 1
 fi
 
@@ -62,9 +62,15 @@ case "$VENDOR" in
     download_files "gsd-build/get-shit-done" "^(references|templates).*(\.md|\.json)$" "$VENDOR_DIR"
     COMMIT=$(gh api repos/gsd-build/get-shit-done/commits/main --jq '.sha[0:8]')
     ;;
+  gstack)
+    echo "Updating gstack..."
+    rm -rf "$VENDOR_DIR" && mkdir -p "$VENDOR_DIR"
+    download_files "garrytan/gstack" "\.md$" "$VENDOR_DIR"
+    COMMIT=$(gh api repos/garrytan/gstack/commits/main --jq '.sha[0:8]')
+    ;;
   *)
     echo "Unknown vendor: $VENDOR"
-    echo "Available: agency-agents, bmad-method, everything-claude-code, superpowers, gsd"
+    echo "Available: agency-agents, bmad-method, everything-claude-code, superpowers, gsd, gstack"
     exit 1
     ;;
 esac

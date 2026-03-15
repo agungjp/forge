@@ -20,3 +20,10 @@ Setiap vendor punya `last_updated` dan `pinned_commit`. Update manual via:
 | everything-claude-code | https://github.com/affaan-m/everything-claude-code | 2026-03-16 | (unpinned) | rules/, standard/ |
 | superpowers | https://github.com/obra/superpowers | 2026-03-16 | 363923f7 | skills/ |
 | gsd | https://github.com/gsd-build/get-shit-done | 2026-03-16 | 33dcb775 | (tools only) |
+| gstack | https://github.com/garrytan/gstack | 2026-03-16 | (unpinned) | skills/ |
+
+## gstack
+- **Repo:** garrytan/gstack
+- **Last updated:** 2026-03-16
+- **Contents:** Claude Code skills: plan-ceo-review, plan-eng-review, review, ship, browse, qa, retro
+- **Why:** Founder + engineering review layer yang belum ada di forge workflow
