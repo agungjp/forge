@@ -75,11 +75,22 @@ case "$VENDOR" in
     ;;
 esac
 
-# Update SOURCES.md pinned commit
-if [ -f "$FORGE_DIR/vendor/SOURCES.md" ]; then
-  # Update the pinned commit column for this vendor
-  sed -i.bak "s|^| $VENDOR |" "$FORGE_DIR/vendor/SOURCES.md" || true
-  rm -f "$FORGE_DIR/vendor/SOURCES.md.bak"
+# Update SOURCES.md pinned commit untuk vendor ini
+if [ -f "$FORGE_DIR/vendor/SOURCES.md" ] && [ -n "$COMMIT" ] && command -v python3 >/dev/null 2>&1; then
+  python3 - "$FORGE_DIR/vendor/SOURCES.md" "$VENDOR" "$COMMIT" <<'PYEOF'
+import sys
+filepath, vendor, commit = sys.argv[1], sys.argv[2], sys.argv[3]
+try:
+    with open(filepath, 'r') as f:
+        lines = f.readlines()
+    for i, line in enumerate(lines):
+        if f'| {vendor} |' in line and '(unpinned)' in line:
+            lines[i] = line.replace('(unpinned)', commit, 1)
+    with open(filepath, 'w') as f:
+        f.writelines(lines)
+except Exception:
+    pass
+PYEOF
 fi
 
 echo ""
