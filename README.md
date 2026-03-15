@@ -24,6 +24,22 @@ Forge adalah workflow OS yang mengkolaborasikan tools terbaik untuk AI-assisted 
 | `hooks/` | Automation hooks (session-start, stop, precompact) |
 | `templates/` | forge init skeleton |
 | `implementations/` | Reference implementations (orbit) |
+| `vendor/` | Raw upstream snapshots — agency-agents, BMAD, ECC, superpowers, GSD |
+| `workflows/` | SDLC workflows adapted dari BMAD — analysis, planning, solutioning, quick-flow |
+| `rules/` | Coding standards per language — common, php-laravel, dart-flutter |
+
+## Update Strategy
+
+Vendor snapshots diupdate manual via script:
+```bash
+./forge-update.sh agency-agents      # update ke latest
+./forge-update.sh bmad-method
+./forge-update.sh everything-claude-code
+./forge-update.sh superpowers
+./forge-update.sh gsd
+```
+
+Forge-native layer (`personas/`, `workflows/`, `rules/`, `skills/`) **tidak** di-overwrite saat update vendor — ini adalah adaptasi opinionated Forge.
 
 ## Quick Start
 
