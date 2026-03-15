@@ -15,6 +15,24 @@ pegagan:
     simple: "claude-haiku-4-5-20251001"
     medium: "claude-sonnet-4-6"
     complex: "claude-opus-4-6"
+  task_routing:
+    haiku:
+      - evidence_collection
+      - token_audit
+      - simple_search
+      - state_update
+      - formatting
+    sonnet:
+      - feature_implementation
+      - schema_design
+      - code_review
+      - testing
+      - daily_tasks
+    opus:
+      - production_gate
+      - incident_triage
+      - high_stakes_architecture
+      - initial_brainstorm_large_feature
 
 personas:
   pm: "John"
