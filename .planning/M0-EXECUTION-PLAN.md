@@ -173,34 +173,18 @@ cd ~/Sandbox/orbit && npx bmad-method install --modules bmm --tools claude-code
 
 ## Wave 6 — CI/CD & Integration (dependency: W2 selesai)
 
-### W6-1: claude-code-action
-**Action:** `/install-github-app` di Claude Code terminal
-**Files buat:**
-- `orbit-server/.github/workflows/claude-review.yml`
-- `orbit-mobile/.github/workflows/claude-review.yml`
-**GitHub Secret:** `CLAUDE_API_KEY` di agungjp/orbit-server + orbit-mobile
+> ⚠️ **KEPUTUSAN 2026-03-17:** Tidak ada Anthropic API key terpisah — pakai Claude Max/Pro only.
+> W6-1, W6-2, W6-4 di-DEFER ke M0.5 (future, kalau keputusan berubah).
+> Hanya W6-3 yang dikerjakan sekarang.
 
-### W6-2: claude-code-security-review
-**Files buat:**
-- `orbit-server/.github/workflows/security.yml`
-**Custom instructions:** Laravel/Filament specific — SQL injection via Eloquent, RLS bypass, hardcoded secrets
-
-### W6-3: GitHub branch protection orbit-server
+### W6-3: GitHub branch protection orbit-server ✅ DIKERJAKAN
 **Settings:**
-- Require PR review: Claude (required) + Agung (required)
-- Require status checks: security scan pass
+- Require PR review: Agung (required)
 - Auto-merge on Agung approval
 
-### W6-4: Cyrus setup
-**Repo:** https://github.com/ceedaragents/cyrus
-**Action:**
-```bash
-npm install -g cyrus-ai
-cyrus auth <token>
-```
-**Config:** Connect ke Linear workspace + orbit-server GitHub repo
-**Gotcha:** Unset `CLAUDECODE` + `CLAUDE_CODE_ENTRYPOINT` via wrapper script (env var leak issue)
-**Test:** Buat 1 Linear issue → assign ke Cyrus → verify worktree + PR terbuat
+### ~~W6-1: claude-code-action~~ — DEFER (butuh API key)
+### ~~W6-2: claude-code-security-review~~ — DEFER (butuh API key)
+### ~~W6-4: Cyrus~~ — DEFER (butuh API key untuk spawn sessions)
 
 ---
 
