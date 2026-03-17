@@ -57,6 +57,56 @@ Urutan eksekusi berdasarkan dependency dan impact. Setiap item bisa dikerjakan i
 
 ---
 
+## Wave 2.5 — Founder Control Layer (dependency: W1 selesai)
+
+### W2.5-1: Dokumen `forge/standard/founder-gates.md`
+**Content — definisikan 3 level gate:**
+
+```
+ALWAYS STOP (tidak bisa di-skip, sistem halt):
+  - Production deploy
+  - ADR baru yang ubah DB schema
+  - PR ke main branch
+
+CONFIGURABLE (default stop, Agung bisa skip eksplisit):
+  - Architecture review sebelum Amelia mulai implementasi
+  - Staging deploy
+  - Breaking change di API contract
+
+NEVER STOP (fully auto, tidak perlu notify):
+  - Bugfix minor
+  - Test writing
+  - Documentation update
+  - Code review comment
+  - Linear issue status update
+```
+
+### W2.5-2: `#pegagan-control` Slack channel
+**Action:**
+- Buat channel `#pegagan-control` di Slack workspace
+- Pegagan monitor channel ini di setiap session start via Slack MCP
+- Commands yang dikenali:
+  - `stop` — halt semua agents yang sedang jalan
+  - `pause` — pause dan tunggu instruksi
+  - `resume` — lanjut dari titik terakhir
+  - `bypass [step]` — skip gate tertentu
+  - `explain` — Pegagan jelaskan apa yang sedang dikerjakan
+
+### W2.5-3: ralph-loop safety config
+**Rules sebelum ralph-loop diaktifkan:**
+- Max 10 iterasi per session sebelum stop dan notify Slack
+- Jika tidak ada commit baru setelah 3 iterasi → escalate ke Agung
+- Budget ceiling di Paperclip: Rp X per overnight session
+- "Dead man's switch": kalau Agung tidak respond Slack dalam 8 jam → system pause otomatis
+
+### W2.5-4: Pegagan session-start ritual update
+**Tambah ke `~/.claude/agents/pegagan.md`:**
+- Cek `#pegagan-control` channel setiap session start
+- Cek apakah ada HARD GATE yang pending approval dari Agung
+- Jangan mulai task baru kalau ada gate yang belum di-resolve
+
+---
+
 ## Wave 3 — Agent Teams & Hooks (dependency: W2 selesai)
 
 ### W3-1: Agent Teams enable
@@ -263,7 +313,8 @@ cyrus auth <token>
 
 ```
 Wave 1 (quick wins, 30 menit)
-  → Wave 2 (identity/rules, 1 jam)
+  → Wave 2 (identity/rules, 1 jam) [paralel dengan Wave 2.5]
+  → Wave 2.5 (founder control layer, 30 menit)
   → Wave 3 (agent teams + hooks, 1 jam) [paralel dengan Wave 4]
   → Wave 4 (BMAD, 2 jam)
   → Wave 5 (specialist agents, 1 jam)
