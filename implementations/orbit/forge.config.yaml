@@ -6,9 +6,10 @@ project:
   type: "fullstack"
   description: "Sistem inspeksi & monitoring RTU untuk PLN SCADA UP2D Jawa Barat"
   stack:
-    backend: "laravel"      # Laravel 12 + Filament v3
-    frontend: "flutter"     # Flutter 3.41.2 + Riverpod
-    database: "postgres"    # Supabase PostgreSQL
+    backend: "Laravel 12 + Filament v3 + PHP 8.3"
+    frontend: "Flutter 3.41.2 + Riverpod 2.x"
+    database: "Supabase PostgreSQL 15 + RLS"
+    infrastructure: "Docker + OrbStack + Tailscale"
 
 pegagan:
   name: "Pegagan"
